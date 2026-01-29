@@ -10,4 +10,4 @@ class ScheduleRepository(private val api: ScheduleApi) {
             end = "2026-02-07"
         )
     }
-} 
+}
