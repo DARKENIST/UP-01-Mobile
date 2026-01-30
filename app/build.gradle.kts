@@ -5,13 +5,13 @@ plugins {
 }
 
 android {
-    namespace = "com.example.natkcollegeschedule"
+    namespace = "com.example.educationalpracticemobile"
     compileSdk {
         version = release(36)
     }
 
     defaultConfig {
-        applicationId = "com.example.natkcollegeschedule"
+        applicationId = "com.example.educationalpracticemobile"
         minSdk = 31
         targetSdk = 36
         versionCode = 1
@@ -59,11 +59,16 @@ dependencies {
     debugImplementation(libs.androidx.compose.ui.tooling)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
 
-    // Сетевое взаимодействие (Retrofit)
+    //Сторонние библиотеки
     implementation("com.squareup.retrofit2:retrofit:2.12.0")
     implementation("com.squareup.retrofit2:converter-gson:2.12.0")
-    // Управление состоянием UI (ViewModel для Compose) – опционально, если полезу в MVVM
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.7")
-    // Асинхронные операции (Корутины)
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.10.2")
+
+    implementation("androidx.datastore:datastore-preferences:1.0.0")
+    implementation("androidx.compose.material:material-icons-extended:1.6.7")
+    implementation("androidx.datastore:datastore-preferences:1.2.0")
+    implementation("androidx.datastore:datastore-preferences-core:1.2.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.1")
+
 }

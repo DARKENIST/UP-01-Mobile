@@ -21,16 +21,14 @@ import kotlinx.coroutines.launch
 @Composable
 fun FavoritesScreen(
     favoritesDataStore: FavoritesDataStore,
-    onGroupSelected: (String) -> Unit, // Изменено: теперь передаем имя группы
+    onGroupSelected: (String) -> Unit,
     modifier: Modifier = Modifier
 ) {
     var favoriteGroups by remember { mutableStateOf<Set<String>>(emptySet()) }
     var loading by remember { mutableStateOf(true) }
 
-    // Загружаем избранные группы
     LaunchedEffect(Unit) {
         try {
-            // Подписываемся на изменения избранных групп
             favoritesDataStore.favoriteGroups.collectLatest { favorites ->
                 favoriteGroups = favorites
                 loading = false
@@ -97,7 +95,7 @@ fun EmptyFavoritesScreen() {
 fun FavoritesListScreen(
     favoriteGroups: Set<String>,
     favoritesDataStore: FavoritesDataStore,
-    onGroupSelected: (String) -> Unit // Изменено
+    onGroupSelected: (String) -> Unit
 ) {
     val coroutineScope = rememberCoroutineScope()
 
@@ -116,7 +114,7 @@ fun FavoritesListScreen(
             verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
             items(favoriteGroups.toList()) { groupName ->
-                com.example.educationalpracticemobile.ui.favorites.FavoriteGroupItem(
+                com.example.natkcollegeschedule.ui.favorites.FavoriteGroupItem(
                     groupName = groupName,
                     onRemoveClick = {
                         coroutineScope.launch {
@@ -124,7 +122,7 @@ fun FavoritesListScreen(
                         }
                     },
                     onClick = {
-                        onGroupSelected(groupName) // Передаем имя группы
+                        onGroupSelected(groupName)
                     }
                 )
             }

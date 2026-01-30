@@ -1,6 +1,4 @@
 package com.example.natkcollegeschedule
-
-
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -31,7 +29,8 @@ import com.example.natkcollegeschedule.ui.theme.NATKCollegeScheduleTheme
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class MainActivity : ComponentActivity() {
+class MainActivity : ComponentActivity()
+{
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -51,13 +50,10 @@ fun CollegeScheduleApp() {
 
     val retrofit = remember {
         Retrofit.Builder()
-            .baseUrl("http://10.0.2.2:5268/") // localhost для Android Emulator
+            .baseUrl("http://10.0.2.2:5193/") // localhost для Android Emulator
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }
-
-    55
-
     val api = remember { retrofit.create(ScheduleApi::class.java) }
     val repository = remember { ScheduleRepository(api) }
 
@@ -86,10 +82,6 @@ fun CollegeScheduleApp() {
                 AppDestinations.FAVORITES ->
                     Text("Избранные группы", modifier =
                         Modifier.padding(innerPadding))
-
-                AppDestinations.PROFILE ->
-                    Text("Профиль студента", modifier =
-                        Modifier.padding(innerPadding))
             }
         }
     }
@@ -101,5 +93,4 @@ enum class AppDestinations(
 ) {
     HOME("Home", Icons.Default.Home),
     FAVORITES("Favorites", Icons.Default.Favorite),
-    PROFILE("Profile", Icons.Default.AccountBox),
 }
